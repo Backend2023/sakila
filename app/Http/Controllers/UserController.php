@@ -17,7 +17,7 @@ class UserController extends Controller
         return response()->json(array('comment' => "ja sam  /app/http/Usercontroller::index() :)"));
     }   
     /*
-     /user-redirect2action
+     http://localhost:8000/user-redirect2action
      */
      public static function action1()
     {
@@ -27,8 +27,11 @@ class UserController extends Controller
        //MOŽE I OVAKO:
        // return redirect()->action([UserController::class, 'action2']);
     }
-         public static function action2()
+         public static function action2(Request $request)
     {
+        // http://localhost:8000/user-action2?jedan=dva
+        //dd($request->all());  // display and die()
+        //dd($request->jedan); // dohvaćam varijablu iz querystringa
         return "ja sam  content iz /app/http/Usercontroller::action2() :)";
     }
 }

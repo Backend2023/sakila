@@ -37,11 +37,13 @@ Route::view('profile', 'profile')
 Route::get('/greeting', function () {
     return 'Hello World';
 });
-// /user -> poziva kontroller akciju index() koja vraća raw text
-Route::get('/user', [UserController::class, 'index']);
 
-// /userjson -> poziva kontroller akciju indexJson() koja vraća JSON 
-Route::get('/userjson', [UserController::class, 'indexjson'])->name('test-userjson-rute');
+Route::controller(UserController::class)->group(function () {
+    // /user -> poziva kontroller akciju index() koja vraća raw text
+    Route::get('/user',  'index');
+    // /userjson -> poziva kontroller akciju indexJson() koja vraća JSON 
+    Route::get('/userjson',  'indexjson')->name('test-userjson-rute');
+});
 
 // /userjson -> poziva kontroller akciju action1() koja preusmjerava na action2 
 Route::get('/user-redirect2action', [UserController::class, 'action1'])->name('test-redirekcija-action1');
@@ -68,5 +70,61 @@ Route::redirect('/here', '/there'); //302 temporarily.
 Route::redirect('/hereperm', '/thereperm', 303);
 Route::permanentRedirect('/herpermanent', '/therepermanent'); // search engine remember
 
+Route::any('/preusmjeri',  function () {
+    return redirect()->route('profile');
+})->name('test-preusmjerenje');
+
+
+
+// view forme za test CSRF
 Route::view('/forma', 'forma')->name('forma');
 Route::view('/formatest', 'forma', ['name' => 'Taylor'])->name('forma-test');
+
+//Rute s parametrima
+//http://localhost:8000/user/123
+Route::get('/user/{id}', function (string $id) {
+    return 'User '.$id;
+})->where('id', '[0-9]+');
+
+// ograničenje na numericke parametre je postavljeno u app/providers/appserviceprovider.php
+Route::get('/usernum/{id}', function (string $id) {
+    return 'Usernum '.$id;
+});
+
+Route::get('/users/{id}', function (string $id) {
+    return 'Users '.$id;
+//})->whereAlphaNumeric('id')->name("users-ruta");
+})->whereAlpha('id')->name("users-ruta");  //http://localhost:8000/users/qtest
+
+//  http://localhost:8000/user/123/pero/email/marko
+Route::get('/user/{id}/{ime}/email/{email}', function (string $id, string $name, string $email) {
+    return 'User '.$id.' Ime: '.$name.' Email: '.$email; // User 123 Ime: pero Email: marko
+})->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+', 'email' => '[A-Za-z]+@+[A-Za-z]+.+[A-Za-z]']);
+
+//  http://localhost:8000/user/123/pero/marko
+Route::get('/user/{id}/ime/{ime?}', function (string $id, ?string $name='John Doe') {
+    return 'User '.$id.' Ime: '.$name; // User 123 Ime: pero Email: marko
+});
+
+
+// poddomena
+// http://ddd.localhost:8000/duser/123
+Route::domain('{poddomena}.localhost')->group(function () {
+    Route::get('duser/{id}', function (string $poddomena, string $id) {
+        return 'Users '.$id. ' tvoja domena je:'.$poddomena;
+    });
+});
+
+// Prefix
+//  GET|HEAD   admin/things .......................................... admin.thingovi › UserController
+//  GET|HEAD   admin/users ........................................... admin.useri › UserController
+Route::prefix('admin')->name('admin.')->controller(UserController::class)->group(function () {
+    Route::get('/users', function () {
+        // Matches The "/admin/users" URL
+        return 1;
+    })->name('useri');
+    Route::get('/things', function () {
+        // Matches The "/admin/things" URL
+        return 2;
+    })->name('thingovi');
+});
