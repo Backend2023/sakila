@@ -43,6 +43,7 @@
                 <hr>
                 <form method="post" action="/testany">
                     <input type="submit" name="test any">
+                    <label>vraća 419 PAGE EXPIRED jer nema CSRF token</label>
                 </form>
                 <hr>
 

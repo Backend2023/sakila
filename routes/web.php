@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+
+require __DIR__.'/auth.php';
+
 /*
 Route::get('/', function () {  //anonimna funkcija, closure
     return view('welcome');
@@ -26,7 +29,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+
 
 // Primjeri ruta
 
@@ -39,6 +42,10 @@ Route::get('/user', [UserController::class, 'index']);
 
 // /userjson -> poziva kontroller akciju indexJson() koja vraća JSON 
 Route::get('/userjson', [UserController::class, 'indexjson'])->name('test-userjson-rute');
+
+// /userjson -> poziva kontroller akciju action1() koja preusmjerava na action2 
+Route::get('/user-redirect2action', [UserController::class, 'action1'])->name('test-redirekcija-action1');
+Route::get('/user-action2', [UserController::class, 'action2']);
 
 Route::match(['get', 'post'], '/testmatch', function () {
     return 'Hello World iz match rute';
