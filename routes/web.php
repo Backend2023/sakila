@@ -32,10 +32,11 @@ Route::view('profile', 'profile')
 
 
 // Primjeri ruta
-
+use Illuminate\Http\Request;
 // /greeting -> anonimnu callback funkciju (closure func ) koja ispisuje neki txt
-Route::get('/greeting', function () {
-    return 'Hello World';
+Route::get('/greeting', function (Request $request) {
+    return 'Hello World, tvoja IP adresa je:'.$request->getClientIp()
+    .' Tvoj querystring je: '.$request->getQueryString();
 });
 
 Route::controller(UserController::class)->group(function () {
