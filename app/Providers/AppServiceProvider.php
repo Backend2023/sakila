@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         // kao da smo na rutu s id dodali  ->where('id', '[0-9]+');
         //  routes/web.php:
         Route::pattern('id', '[0-9]+');
+
+        RateLimiter::for('ime-limkitera', function (Request $request) {
+            return Limit::perMinute(20); // vraća 429 TOO MANY REQUESTS 
+        });
     }
 }
