@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 
 require __DIR__ . '/auth.php';
 
+
+Route::view('/komponenta', 'komponenta')->name('komponenta');
+
 /*
 Route::get('/', function () {  //anonimna funkcija, closure
     return view('welcome');

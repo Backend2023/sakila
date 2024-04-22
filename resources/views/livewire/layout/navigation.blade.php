@@ -32,6 +32,19 @@ new class extends Component
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
+                        {{--
+                            {{ __('You are logged in!') }}
+Why is the type included in double underscore (function?) 
+when it renders perfectly fine without it?
+ ouble underscore is translation of the text. So, if you want to use
+  multiple languages - you'll be able to easily define translations 
+  for this text    
+  https://laravel.com/docs/11.x/localization                       
+                            --}}
+                    </x-nav-link>
+                    <x-nav-link :href="route('test-any-rute')" :active="request()->routeIs('test-any-rute')" wire:navigate>
+                        {{-- __('Test anyrute') --}}
+                        Test anyrute
                     </x-nav-link>
                 </div>
             </div>
