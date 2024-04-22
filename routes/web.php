@@ -8,6 +8,8 @@ require __DIR__ . '/auth.php';
 
 
 Route::view('/komponenta', 'komponenta')->name('komponenta');
+Route::get('/dodaj-korisnika', [UserController::class,'dodajKorisnika'])->name('dodaj-korisnika');
+Route::get('/update-korisnika', [UserController::class,'updateKorisnika'])->name('update-korisnika');
 
 /*
 Route::get('/', function () {  //anonimna funkcija, closure

@@ -30,6 +30,35 @@
                     <main class="mt-6">
                        <!-- Ovdje ide lista korisnika -->
 <h1>KORISNIK</h1>
+
+<!-- <form action="/dodaj-korisnika"> -->
+<form action="{{ route('dodaj-korisnika') }}">
+<input type="submit" name="Dodaj random usera">
+</form>
+
+<a href="{{route('update-korisnika')}}">updateKorisnika novi timestamp</a>
+<!-- Select a trebamo scalar -->
+<?=$brojusera[0]->ukupno ?>
+
+<!-- Skalarna vrijednost (broj), rezultat je samo jedna vrijednost -->
+<?=$brojusera2 ?>
+
+<!-- Select polje sa svim rezultatima -->
+<?=dd($brojusera)?>
+
+<?php
+
+foreach ($users as $u) {
+    echo $u->name
+    .' '.$u->id
+    .' '.$u->email
+    .' '.$u->password
+    .' '.$u->created_at
+    .' '.$u->updated_at.'<br>';
+}
+
+?>
+<?=dd($users[0])?>
 <?=dd($users)?>
 
                     </main>

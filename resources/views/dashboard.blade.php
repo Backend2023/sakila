@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>
+        <nav>
+            <ul>
+                <li><a href="/sviuseri">Svi useri test raw DB</a></li>
+                <li><a href="{{ route('sviuseri') }}">Svi useri test raw DB</a></li>
+            </ul>
+        </nav>
     </x-slot>
 
     <div class="py-12">
