@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CityController;
 
 
 require __DIR__ . '/auth.php';
 
+Route::resource('cities', CityController::class);
 
 Route::view('/komponenta', 'komponenta')->name('komponenta');
 Route::get('/dodaj-korisnika', [UserController::class,'dodajKorisnika'])->name('dodaj-korisnika');
