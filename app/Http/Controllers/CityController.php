@@ -13,7 +13,12 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+
+        $cities = City::all()->reverse();
+        return view("cities.index", ['cities'=>$cities]);        //opcija 3
+       // return view("cities.index", compact("cities"));        //opcija 1
+       // return view("cities.index")->with( compact("cities")); //opcija 2
+        
     }
 
     /**
@@ -29,7 +34,13 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        //https://amanj0314.medium.com/laravel-validation-using-request-53f7f90ceff7
+        //$city = new City();    //ovo
+        //$city = City::create($request->all());  //ili ovo ??
+        $city->city= $request->city;
+        $city->country_id= $request->input('country_id');
+        $city->save();
+        return redirect()->route('cities.index')->with('success','');
     }
 
     /**
@@ -37,7 +48,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        //
+      return view('cities.show', ['city'=>$city]);
     }
 
     /**

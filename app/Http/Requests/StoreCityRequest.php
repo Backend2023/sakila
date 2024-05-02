@@ -22,7 +22,10 @@ class StoreCityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            //TODO popuni pravila validacije
         ];
+    }
+    public function messages(): array{
+        return [];  //TODO popuni poruke o greskama
     }
 }
