@@ -12,6 +12,9 @@ php artisan migrate:generate --tables="address,customer,film,film_category,langu
 
 # seeding:
 php artisan db:seed
+php artisan db:seed --class=CountrySeeder
+php artisan db:seed --class=CitySeeder
+php artisan db:seed --class=AddressSeeder
 php artisan migrate:rollback
 
 # routing
