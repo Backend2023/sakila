@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('languages', function (Blueprint $table) {
-            $table->tinyIncrements('language_id');
-            $table->char('name', 20);
-          // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
-            $table->timestamps();
-
+        Schema::table('cities', function (Blueprint $table) {
+            $table->foreign(['country_id'], 'fk_city_countries')->references(['country_id'])->on('country')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('languages');
+        Schema::table('cities', function (Blueprint $table) {
+            $table->dropForeign('fk_city_countries');
+        });
     }
 };

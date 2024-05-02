@@ -15,7 +15,8 @@ return new class extends Migration
             $table->smallIncrements('actor_id');
             $table->string('first_name', 45);
             $table->string('last_name', 45)->index('idx_actor_last_name')->comment('prezime');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           $table->timestamps();
         });
     }
 

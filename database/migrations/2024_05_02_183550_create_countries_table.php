@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('city', function (Blueprint $table) {
-            $table->foreign(['country_id'], 'fk_city_countries')->references(['country_id'])->on('country')->onUpdate('cascade')->onDelete('restrict');
+        Schema::create('countries', function (Blueprint $table) {
+            $table->smallIncrements('country_id');
+            $table->string('country', 50);
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('city', function (Blueprint $table) {
-            $table->dropForeign('fk_city_countries');
-        });
+        Schema::dropIfExists('countries');
     }
 };

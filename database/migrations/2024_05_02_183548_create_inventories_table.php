@@ -15,7 +15,8 @@ return new class extends Migration
             $table->mediumIncrements('inventory_id');
             $table->unsignedSmallInteger('film_id')->index('idx_fk_film_id');
             $table->unsignedTinyInteger('store_id');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+          //  $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+          $table->timestamps();
 
             $table->index(['store_id', 'film_id'], 'idx_store_id_film_id');
         });

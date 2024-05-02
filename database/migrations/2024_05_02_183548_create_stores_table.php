@@ -15,7 +15,9 @@ return new class extends Migration
             $table->tinyIncrements('store_id');
             $table->unsignedTinyInteger('manager_staff_id')->unique('idx_unique_manager');
             $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
+
         });
     }
 

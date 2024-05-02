@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('city_id')->index('idx_fk_city_id');
             $table->string('postal_code', 10)->nullable();
             $table->string('phone', 20);
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           $table->timestamps();
         });
     }
 

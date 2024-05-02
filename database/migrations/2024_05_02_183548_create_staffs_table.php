@@ -22,7 +22,9 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('username', 16);
             $table->string('password', 40)->nullable();
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+         //   $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
+
         });
     }
 

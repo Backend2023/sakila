@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('category_id');
             $table->string('name', 25);
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+          //  $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
         });
     }
 

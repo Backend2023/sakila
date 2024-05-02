@@ -24,7 +24,8 @@ return new class extends Migration
             $table->decimal('replacement_cost', 5)->default(19.99);
             $table->enum('rating', ['G', 'PG', 'PG-13', 'R', 'NC-17'])->nullable()->default('G');
             $table->set('special_features', ['Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes'])->nullable();
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
         });
     }
 

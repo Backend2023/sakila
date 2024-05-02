@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('customer_id')->index('idx_fk_customer_id');
             $table->dateTime('return_date')->nullable();
             $table->unsignedTinyInteger('staff_id')->index('idx_fk_staff_id');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            //$table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
 
             $table->unique(['rental_date', 'inventory_id', 'customer_id'], 'rental_date');
         });

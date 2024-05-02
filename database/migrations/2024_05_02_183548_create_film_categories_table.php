@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('film_categories', function (Blueprint $table) {
             $table->unsignedSmallInteger('film_id');
             $table->unsignedTinyInteger('category_id')->index('fk_film_category_category');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            //$table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
 
+            $table->timestamps();
+            
             $table->primary(['film_id', 'category_id']);
         });
     }

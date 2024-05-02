@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('film_actors', function (Blueprint $table) {
             $table->unsignedSmallInteger('actor_id');
             $table->unsignedSmallInteger('film_id')->index('idx_fk_film_id');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+           // $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
 
             $table->primary(['actor_id', 'film_id']);
         });

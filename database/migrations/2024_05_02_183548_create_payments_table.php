@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer('rental_id')->nullable()->index('fk_payment_rental');
             $table->decimal('amount', 5);
             $table->dateTime('payment_date');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+         //   $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+         $table->timestamps();
+         
         });
     }
 

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
             $table->boolean('active')->default(true);
             $table->dateTime('create_date');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+          //  $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
         });
     }
 

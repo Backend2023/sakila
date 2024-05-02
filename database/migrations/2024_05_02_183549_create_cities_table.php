@@ -15,7 +15,9 @@ return new class extends Migration
             $table->smallIncrements('city_id');
             $table->string('city', 50);
             $table->unsignedSmallInteger('country_id')->index('idx_fk_country_id');
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+         //   $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->timestamps();
+
         });
     }
 
