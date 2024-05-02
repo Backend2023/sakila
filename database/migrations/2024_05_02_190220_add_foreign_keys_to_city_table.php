@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('city', function (Blueprint $table) {
-            $table->foreign(['country_id'], 'fk_city_country')->references(['country_id'])->on('country')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['country_id'], 'fk_city_countries')->references(['country_id'])->on('country')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('city', function (Blueprint $table) {
-            $table->dropForeign('fk_city_country');
+            $table->dropForeign('fk_city_countries');
         });
     }
 };

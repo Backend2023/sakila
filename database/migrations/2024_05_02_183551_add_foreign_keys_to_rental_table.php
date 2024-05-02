@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('rentals', function (Blueprint $table) {
-            $table->foreign(['customer_id'], 'fk_rental_customer')->references(['customer_id'])->on('customers')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['inventory_id'], 'fk_rental_inventory')->references(['inventory_id'])->on('inventories')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['staff_id'], 'fk_rental_staff')->references(['staff_id'])->on('staffs')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['customer_id'], 'fk_rental_customers')->references(['customer_id'])->on('customers')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['inventory_id'], 'fk_rental_inventories')->references(['inventory_id'])->on('inventories')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['staff_id'], 'fk_rental_staffs')->references(['staff_id'])->on('staffs')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -24,9 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('rentals', function (Blueprint $table) {
-            $table->dropForeign('fk_rental_customer');
-            $table->dropForeign('fk_rental_inventory');
-            $table->dropForeign('fk_rental_staff');
+            $table->dropForeign('fk_rental_customers');
+            $table->dropForeign('fk_rental_inventories');
+            $table->dropForeign('fk_rental_staffs');
         });
     }
 };

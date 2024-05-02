@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('stores', function (Blueprint $table) {
-            $table->foreign(['address_id'], 'fk_store_address')->references(['address_id'])->on('addresses')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['manager_staff_id'], 'fk_store_staff')->references(['staff_id'])->on('staffs')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['address_id'], 'fk_store_addresses')->references(['address_id'])->on('addresses')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['manager_staff_id'], 'fk_store_staffs')->references(['staff_id'])->on('staffs')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('stores', function (Blueprint $table) {
-            $table->dropForeign('fk_store_address');
-            $table->dropForeign('fk_store_staff');
+            $table->dropForeign('fk_store_addresses');
+            $table->dropForeign('fk_store_staffs');
         });
     }
 };

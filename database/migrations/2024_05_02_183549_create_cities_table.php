@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('city', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->smallIncrements('city_id');
             $table->string('city', 50);
             $table->unsignedSmallInteger('country_id')->index('idx_fk_country_id');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('city');
+        Schema::dropIfExists('cities');
     }
 };

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('film_categories', function (Blueprint $table) {
-            $table->foreign(['category_id'], 'fk_film_category_category')->references(['category_id'])->on('categories')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['film_id'], 'fk_film_category_film')->references(['film_id'])->on('films')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['category_id'], 'fk_film_category_categories')->references(['category_id'])->on('categories')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['film_id'], 'fk_film_category_films')->references(['film_id'])->on('films')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('film_categories', function (Blueprint $table) {
-            $table->dropForeign('fk_film_category_category');
-            $table->dropForeign('fk_film_category_film');
+            $table->dropForeign('fk_film_category_categories');
+            $table->dropForeign('fk_film_category_films');
         });
     }
 };
