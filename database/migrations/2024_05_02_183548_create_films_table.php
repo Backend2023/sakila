@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('film', function (Blueprint $table) {
+        Schema::create('films', function (Blueprint $table) {
             $table->smallIncrements('film_id');
             $table->string('title', 128)->index('idx_title');
             $table->text('description')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('film');
+        Schema::dropIfExists('films');
     }
 };

@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rental', function (Blueprint $table) {
-            $table->integer('rental_id', true);
-            $table->dateTime('rental_date');
-            $table->unsignedMediumInteger('inventory_id')->index('idx_fk_inventory_id');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->smallIncrements('payment_id');
             $table->unsignedSmallInteger('customer_id')->index('idx_fk_customer_id');
-            $table->dateTime('return_date')->nullable();
             $table->unsignedTinyInteger('staff_id')->index('idx_fk_staff_id');
+            $table->integer('rental_id')->nullable()->index('fk_payment_rental');
+            $table->decimal('amount', 5);
+            $table->dateTime('payment_date');
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
-
-            $table->unique(['rental_date', 'inventory_id', 'customer_id'], 'rental_date');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rental');
+        Schema::dropIfExists('payments');
     }
 };

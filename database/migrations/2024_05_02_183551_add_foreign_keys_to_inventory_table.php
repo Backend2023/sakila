@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('inventory', function (Blueprint $table) {
-            $table->foreign(['film_id'], 'fk_inventory_film')->references(['film_id'])->on('film')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['store_id'], 'fk_inventory_store')->references(['store_id'])->on('store')->onUpdate('cascade')->onDelete('restrict');
+        Schema::table('inventories', function (Blueprint $table) {
+            $table->foreign(['film_id'], 'fk_inventory_film')->references(['film_id'])->on('films')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['store_id'], 'fk_inventory_store')->references(['store_id'])->on('stores')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('inventory', function (Blueprint $table) {
+        Schema::table('inventories', function (Blueprint $table) {
             $table->dropForeign('fk_inventory_film');
             $table->dropForeign('fk_inventory_store');
         });

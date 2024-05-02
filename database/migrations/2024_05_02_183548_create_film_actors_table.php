@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actor', function (Blueprint $table) {
-            $table->smallIncrements('actor_id');
-            $table->string('first_name', 45);
-            $table->string('last_name', 45)->index('idx_actor_last_name')->comment('prezime');
+        Schema::create('film_actors', function (Blueprint $table) {
+            $table->unsignedSmallInteger('actor_id');
+            $table->unsignedSmallInteger('film_id')->index('idx_fk_film_id');
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+
+            $table->primary(['actor_id', 'film_id']);
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actor');
+        Schema::dropIfExists('film_actors');
     }
 };

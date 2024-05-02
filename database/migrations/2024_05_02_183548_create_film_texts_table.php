@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('language', function (Blueprint $table) {
-            $table->tinyIncrements('language_id');
-            $table->char('name', 20);
-            $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+        Schema::create('film_texts', function (Blueprint $table) {
+            $table->unsignedSmallInteger('film_id')->primary();
+            $table->string('title');
+            $table->text('description')->nullable();
+
+            $table->fullText(['title', 'description'], 'idx_title_description');
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('language');
+        Schema::dropIfExists('film_texts');
     }
 };

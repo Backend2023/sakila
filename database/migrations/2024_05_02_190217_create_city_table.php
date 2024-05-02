@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->tinyIncrements('category_id');
-            $table->string('name', 25);
+        Schema::create('city', function (Blueprint $table) {
+            $table->smallIncrements('city_id');
+            $table->string('city', 50);
+            $table->unsignedSmallInteger('country_id')->index('idx_fk_country_id');
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('city');
     }
 };

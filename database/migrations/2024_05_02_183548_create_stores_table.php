@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory', function (Blueprint $table) {
-            $table->mediumIncrements('inventory_id');
-            $table->unsignedSmallInteger('film_id')->index('idx_fk_film_id');
-            $table->unsignedTinyInteger('store_id');
+        Schema::create('stores', function (Blueprint $table) {
+            $table->tinyIncrements('store_id');
+            $table->unsignedTinyInteger('manager_staff_id')->unique('idx_unique_manager');
+            $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
-
-            $table->index(['store_id', 'film_id'], 'idx_store_id_film_id');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory');
+        Schema::dropIfExists('stores');
     }
 };

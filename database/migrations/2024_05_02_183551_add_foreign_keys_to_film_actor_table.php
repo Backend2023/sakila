@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('film_actor', function (Blueprint $table) {
-            $table->foreign(['actor_id'], 'fk_film_actor_actor')->references(['actor_id'])->on('actor')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign(['film_id'], 'fk_film_actor_film')->references(['film_id'])->on('film')->onUpdate('cascade')->onDelete('restrict');
+        Schema::table('film_actors', function (Blueprint $table) {
+            $table->foreign(['actor_id'], 'fk_film_actor_actor')->references(['actor_id'])->on('actors')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign(['film_id'], 'fk_film_actor_film')->references(['film_id'])->on('films')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('film_actor', function (Blueprint $table) {
+        Schema::table('film_actors', function (Blueprint $table) {
             $table->dropForeign('fk_film_actor_actor');
             $table->dropForeign('fk_film_actor_film');
         });

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('address', function (Blueprint $table) {
-            $table->foreign(['city_id'], 'fk_address_city')->references(['city_id'])->on('city')->onUpdate('cascade')->onDelete('restrict');
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->foreign(['city_id'], 'fk_address_city')->references(['city_id'])->on('cities')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('address', function (Blueprint $table) {
+        Schema::table('addresses', function (Blueprint $table) {
             $table->dropForeign('fk_address_city');
         });
     }

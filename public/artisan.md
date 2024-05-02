@@ -6,6 +6,10 @@ php artisan migrate:status
 php artisan migrate
 php artisan db:table film
 
+## composer require --dev kitloong/laravel-migrations-generator
+php artisan migrate:generate --tables="address,customer,film,film_category,language,category,actor,film_actor,inventory,film_text,staff,store,payment,rental"
+
+
 # seeding:
 php artisan db:seed
 php artisan migrate:rollback

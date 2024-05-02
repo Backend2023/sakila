@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('film_category', function (Blueprint $table) {
-            $table->unsignedSmallInteger('film_id');
-            $table->unsignedTinyInteger('category_id')->index('fk_film_category_category');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->tinyIncrements('category_id');
+            $table->string('name', 25);
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
-
-            $table->primary(['film_id', 'category_id']);
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('film_category');
+        Schema::dropIfExists('categories');
     }
 };

@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('staff', function (Blueprint $table) {
-            $table->tinyIncrements('staff_id');
-            $table->string('first_name', 45);
-            $table->string('last_name', 45);
-            $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
-            $table->binary('picture')->nullable();
-            $table->string('email', 50)->nullable();
+        Schema::create('customers', function (Blueprint $table) {
+            $table->smallIncrements('customer_id');
             $table->unsignedTinyInteger('store_id')->index('idx_fk_store_id');
+            $table->string('first_name', 45);
+            $table->string('last_name', 45)->index('idx_last_name');
+            $table->string('email', 50)->nullable();
+            $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
             $table->boolean('active')->default(true);
-            $table->string('username', 16);
-            $table->string('password', 40)->nullable();
+            $table->dateTime('create_date');
             $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('customers');
     }
 };
