@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         CountrySeeder::class,
         CitySeeder::class,
         AddressSeeder::class,
+        CustomerSeeder::class,
 
         // UserSeeder::class,
         // PostSeeder::class,

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email', 50)->nullable();
             $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
             $table->boolean('active')->default(true);
-            $table->dateTime('create_date');
+           // $table->dateTime('create_date');  // ovo je višak
           //  $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
             $table->timestamps();
         });
