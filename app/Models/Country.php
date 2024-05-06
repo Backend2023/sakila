@@ -21,6 +21,9 @@ class Country extends Model
      * @var string
      */
     protected $primaryKey = 'country_id';
+    // postavljamo ova svojstva ako su nam imena modela i tablica 
+    // različita od laravel sintakse --> User => users
+    protected $table = 'countries';  
    
 }
 
