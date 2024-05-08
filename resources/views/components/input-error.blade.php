@@ -6,4 +6,5 @@
             <li>{{ $message }}</li>
         @endforeach
     </ul>
+    <small>resources/views/components/input-error.blade.php</small>
 @endif

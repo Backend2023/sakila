@@ -7,4 +7,5 @@
      style="display: none;"
     {{ $attributes->merge(['class' => 'text-sm text-gray-600 dark:text-gray-400']) }}>
     {{ $slot->isEmpty() ? 'Saved.' : $slot }}
+    <small>resources/views/components/action-message.blade.php</small>
 </div>

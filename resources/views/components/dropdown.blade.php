@@ -40,4 +40,5 @@ switch ($width) {
             {{ $content }}
         </div>
     </div>
+    <small>resources/views/components/dropdown.blade.php</small>
 </div>

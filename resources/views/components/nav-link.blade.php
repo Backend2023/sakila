@@ -14,4 +14,5 @@ $classes = ($active ?? false)
 -->
 <a {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
+    <small>resources/views/components/nav-link.blade.php</small>
 </a>

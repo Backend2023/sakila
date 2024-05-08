@@ -75,4 +75,5 @@ $maxWidth = [
     >
         {{ $slot }}
     </div>
+    <small>resources/views/components/modal.blade.php</small>
 </div>
