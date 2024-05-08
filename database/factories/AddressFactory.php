@@ -26,7 +26,7 @@ class AddressFactory extends Factory
             // `address` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_unicode_ci',
             'address' => Str::substr(fake()->address(),1,49),
             // `address2` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
-            'address2' => Str::substr(fake()->address(),0,49),
+            'address2' => Str::limit(fake()->address(),45),
             // `district` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_unicode_ci',
             'district'=>Str::substr(fake()->streetAddress(),1,15),
             // `city_id` SMALLINT(5) UNSIGNED NOT NULL,

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 //$ php artisan model:show Country
 //App\Models\Country::all();
@@ -25,6 +26,14 @@ class Country extends Model
     // različita od laravel sintakse --> User => users
     protected $table = 'countries';  
    
+    /**
+     * GDohvati mi sve gradove iz tablice cities
+     */
+    public function cities(): HasMany
+    {
+        return $this->hasMany(City::class, 'country_id');
+    }
+
 }
 
 
