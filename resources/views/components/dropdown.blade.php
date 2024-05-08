@@ -39,6 +39,6 @@ switch ($width) {
         <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
             {{ $content }}
         </div>
-    </div>
+    </div><i class="bi bi-terminal"></i>
     <small>resources/views/components/dropdown.blade.php</small>
 </div>
