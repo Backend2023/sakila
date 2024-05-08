@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+// > $usrs = User::factory()->count(3)->create();
+// [!] Aliasing 'User' to 'App\Models\User' for this Tinker session.
+
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;

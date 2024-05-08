@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
         CountrySeeder::class,
         CitySeeder::class,
         AddressSeeder::class,
-        CustomerSeeder::class,
+
+        //TODO da bi  naprravio customerseeder treba mi model i migracija Staff i Store
+       // CustomerSeeder::class,  
 
         // UserSeeder::class,
         // PostSeeder::class,
