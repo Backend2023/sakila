@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\AddressController;
 
 
 require __DIR__ . '/auth.php';
 
+Route::resource('address', AddressController::class);
 Route::resource('cities', CityController::class);
 
 Route::view('/komponenta', 'komponenta')->name('komponenta');

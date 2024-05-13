@@ -11,3 +11,6 @@
 
 # model
 - fali Address model
+
+# komponenta
+- Laravel komponenta koja dohvaća i prikazuje address, city i country ako predamo address ID

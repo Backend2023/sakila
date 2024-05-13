@@ -36,3 +36,8 @@ php artisan make:model Country -fc
 - php artisan make:test UserTest    
 <!-- kreira unit test -->
 - php artisan make:test UserTest --unit
+
+# component
+- php artisan make:component AddressComponent 
+<!-- app/View/Components/AddressComponent.php -->
+<!-- resources\views\components\address-component.blade.php -->

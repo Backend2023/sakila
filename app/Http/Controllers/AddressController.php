@@ -36,7 +36,7 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        //
+        return view('address.show', ['addressId'=>$address->address_id]);
     }
 
     /**
