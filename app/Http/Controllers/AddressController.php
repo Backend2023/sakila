@@ -36,7 +36,22 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        return view('address.show', ['addressId'=>$address->address_id]);
+        //    http://127.0.0.1:8000/address/7
+        //
+        // > $address= Address::find(7);
+        // = App\Models\Address {#6645
+        //     address_id: 7,
+        //     address: "692 Joliet Street",
+        //     address2: "",
+        //     district: "Attika",
+        //     city_id: 38,
+        //     postal_code: "83579",
+        //     phone: "448477190408",
+        //     created_at: "2024-05-08 18:33:20",
+        //     updated_at: null,
+        //   }
+
+        return view('address.show', ['addressId' => $address->address_id]);
     }
 
     /**

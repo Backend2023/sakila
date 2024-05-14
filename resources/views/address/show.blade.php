@@ -1,3 +1,7 @@
+<x-icon name="building-office-2" />
+<x-icon name="building-office-2" solid />
+<x-icon name="building-office-2" solid mini />
+
 <x-address-component :addressId="$addressId" />
 
 <hr>
