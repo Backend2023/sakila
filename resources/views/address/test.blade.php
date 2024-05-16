@@ -1,4 +1,4 @@
-<!-- resources/views/address/show.blade.php -->
+<!-- resources/views/address/test.blade.php -->
 
 @extends('layouts.bootstrap')
 

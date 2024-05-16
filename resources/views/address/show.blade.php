@@ -1,33 +1,22 @@
-<!-- Layouts Using Template Inheritance -->
+<!-- Layouts Using Components -->
 <!-- resources/views/address/show.blade.php -->
+<!-- https://tailwindflex.com/@nejaa-badr/tailwind-sidebar-layout-2 -->
 
-@extends('layouts.bootstrap')
+<!--    -->
+<x-tailwind-blue-layout>
+    <x-icon name="building-office-2" />
+    <x-icon name="building-office-2" solid />
+    <x-icon name="building-office-2" solid mini />
 
-@section('title', 'Page Title')
+    <x-address-component :addressId="$addressId" />
 
-@section('sidebar')
-@parent
+    <hr>
+    <x-address-component :addressId="77" />
 
-<p>This is appended to the master sidebar.</p>
-@endsection
+    <hr>
+    <x-address-component :addressId="122" />
 
-@section('content')
-<p>This is my body content.</p>
-
-
-<x-icon name="building-office-2" />
-<x-icon name="building-office-2" solid />
-<x-icon name="building-office-2" solid mini />
-
-<x-address-component :addressId="$addressId" />
-
-<hr>
-<x-address-component :addressId="77" />
-
-<hr>
-<x-address-component :addressId="122" />
-
-<div><img src="/slike/LaravelComponent.png" style="width:100%;"></div>
-<div><img src="/slike/Address2.png" style="width:100%;"></div>
-
-@endsection
+    <div><img src="/slike/LaravelComponent.png" style="width:100%;"></div>
+    <div><img src="/slike/Address2.png" style="width:100%;"></div>
+</x-tailwind-blue-layout>
+<!--    -->
