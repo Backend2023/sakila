@@ -8,6 +8,7 @@ use App\Http\Controllers\AddressController;
 
 require __DIR__ . '/auth.php';
 
+Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test');
 Route::resource('address', AddressController::class);
 Route::resource('cities', CityController::class);
 

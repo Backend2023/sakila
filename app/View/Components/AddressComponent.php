@@ -38,7 +38,7 @@ class AddressComponent extends Component
 
 
     $address2 = Address::with('city.country')->findOrFail($addressId);
-    dd($address2);
+    //dd($address2);
     $this->address2 = $address2->address;
     $this->city2 = $address2->city->city;
     $this->country2 = $address2->city->country->country;

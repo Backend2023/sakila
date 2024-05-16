@@ -15,3 +15,9 @@
 - za četvrtak radimo sljedeće:
 - Laravel komponenta koja dohvaća i prikazuje address, city i country ako predamo address ID
 - https://laravel.com/docs/11.x/blade#components
+
+# Blade
+- layout
+- view
+- slot
+- component

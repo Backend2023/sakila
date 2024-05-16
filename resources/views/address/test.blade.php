@@ -1,9 +1,8 @@
-<!-- Layouts Using Template Inheritance -->
 <!-- resources/views/address/show.blade.php -->
 
 @extends('layouts.bootstrap')
 
-@section('title', 'Page Title')
+@section('title', 'Address komponenta grad i drzava')
 
 @section('sidebar')
 @parent
@@ -13,8 +12,6 @@
 
 @section('content')
 <p>This is my body content.</p>
-
-
 <x-icon name="building-office-2" />
 <x-icon name="building-office-2" solid />
 <x-icon name="building-office-2" solid mini />
@@ -29,5 +26,6 @@
 
 <div><img src="/slike/LaravelComponent.png" style="width:100%;"></div>
 <div><img src="/slike/Address2.png" style="width:100%;"></div>
+
 
 @endsection
