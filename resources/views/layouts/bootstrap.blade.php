@@ -13,12 +13,14 @@
 </head>
 
 <body>
-
+    @section('sidebar')
+    This is the master sidebar. layouts/bootstrap.blade.php
+    @show
 
 
     <!-- Page Content -->
     <main>
-    {{-- $slot --}}
+        {{-- $slot --}}
         @yield('content', 'Default content')
     </main>
 

@@ -193,7 +193,7 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
         $city = City::factory()->create(['country_id' => $country->country_id]);
         $address = Address::factory()->create(['city_id' => $city->city_id]);
 
-        $this->assertDatabaseHas('address', ['address_id' => $address->address_id]);
+        $this->assertDatabaseHas('addresses', ['address_id' => $address->address_id]);
         $this->assertNotNull($address->address);
         $this->assertNotNull($address->city_id);
         $this->assertEquals($address->city_id, $city->city_id);

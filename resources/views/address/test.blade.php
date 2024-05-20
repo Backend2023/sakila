@@ -1,13 +1,16 @@
 <!-- resources/views/address/test.blade.php -->
+<!-- http://127.0.0.1:8000/addresstest  -->
 
 @extends('layouts.bootstrap')
 
 @section('title', 'Address komponenta grad i drzava')
 
 @section('sidebar')
-@parent
 
-<p>This is appended to the master sidebar.</p>
+
+<p>Ovo je dodano na vrh sectiona test.blade.php</p>
+
+@parent
 @endsection
 
 @section('content')
@@ -16,6 +19,8 @@
 <x-icon name="building-office-2" solid />
 <x-icon name="building-office-2" solid mini />
 
+<!-- routes/web.php : -->
+<!-- Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test'); -->
 <x-address-component :addressId="$addressId" />
 
 <hr>

@@ -12,7 +12,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $adrese = Address::all()->take(3);
+        $adrese = Address::all()->take(4);
         return view('address.index', compact('adrese'));
     }
 
