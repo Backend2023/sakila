@@ -184,4 +184,26 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
 
     } 
 
+    //use RefreshDatabase;
+
+    public function test_address_model()
+    {
+        // Create a Country, City, and Address using factories
+        $country = Country::factory()->create();
+        $city = City::factory()->create(['country_id' => $country->country_id]);
+        $address = Address::factory()->create(['city_id' => $city->city_id]);
+
+        $this->assertDatabaseHas('address', ['address_id' => $address->address_id]);
+        $this->assertNotNull($address->address);
+        $this->assertNotNull($address->city_id);
+        $this->assertEquals($address->city_id, $city->city_id);
+        $this->assertNotNull($address->district);
+        $this->assertNotNull($address->postal_code);
+        $this->assertNotNull($address->phone);
+        $this->assertEquals($address->city->city_id, $city->city_id);
+        $this->assertEquals($address->city->country->country_id, $country->country_id);
+        $this->assertInstanceOf(City::class, $address->city);
+        $this->assertInstanceOf(Country::class, $address->city->country);
+    }
+
 }

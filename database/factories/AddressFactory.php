@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\City;
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
  */
 class AddressFactory extends Factory
 {
+    protected $model = Address::class;
     /**
      * Define the model's default state.
      *
@@ -29,8 +31,14 @@ class AddressFactory extends Factory
             'address2' => Str::limit(fake()->address(),45),
             // `district` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_unicode_ci',
             'district'=>Str::substr(fake()->streetAddress(),1,15),
+            
+            
             // `city_id` SMALLINT(5) UNSIGNED NOT NULL,
-            'city_id'=>(new City)->inRandomOrder()->first()->city_id,
+          //  'city_id'=>(new City)->inRandomOrder()->first()->city_id,
+
+// Nakon unit test settingsa:
+'city_id' => City::factory(),
+
             // `postal_code` VARCHAR(10) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
             'postal_code'=>fake()->postcode(),
             // `phone` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_unicode_ci',

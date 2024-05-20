@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CountryFactory extends Factory
 {
+    protected $model = Country::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +18,9 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'country' => $this->faker->country,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
