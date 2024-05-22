@@ -1,3 +1,7 @@
+# Naming conventions
+https://webdevetc.com/blog/laravel-naming-conventions/
+
+
 # migrations:
 php artisan make:migration create_countries_table
 php artisan migrate:generate --tables="address,customer,film,film_category,language,category,actor,film_actor,inventory,film_text,staff,store,payment,rental"
@@ -36,6 +40,10 @@ php artisan make:model Country -fc
 - php artisan make:test UserTest    
 <!-- kreira unit test -->
 - php artisan make:test UserTest --unit
+
+# Blade layouts & icons
+https://tailwindflex.com/@nejaa-badr/tailwind-sidebar-layout-2
+https://heroicons.com/
 
 # component
 - php artisan make:component AddressComponent 

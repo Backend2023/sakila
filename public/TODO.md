@@ -21,3 +21,4 @@
 - view
 - slot
 - component
+- napravi na linku Home od tailwind-blue primjere za blade direktive

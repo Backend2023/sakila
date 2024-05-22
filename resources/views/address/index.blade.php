@@ -7,8 +7,9 @@
 
 <hr>
 <h3>Komponenta adresa</h3>
+
 @foreach ($adrese as $a)
-<x-adresa :address="$a"/>
+   <x-adresa :address="$a"/>
 @endforeach
 
 
