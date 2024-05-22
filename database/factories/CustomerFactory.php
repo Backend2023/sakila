@@ -17,7 +17,14 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //'store_id' => $this->faker->numberBetween(1, 5),  //izbacio zboj jednostavnosti
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'email' => $this->faker->unique()->safeEmail,
+            'address_id' => $this->faker->numberBetween(1, 100),  //ima 600 adresa u bazi 
+            'active' => $this->faker->boolean,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

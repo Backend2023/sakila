@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('customer_id');
-            $table->unsignedTinyInteger('store_id');
+          //  $table->unsignedTinyInteger('store_id');
             $table->unsignedSmallInteger('address_id');
             $table->string('first_name', 45);
             $table->string('last_name', 45);

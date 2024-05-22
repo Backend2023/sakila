@@ -8,12 +8,17 @@ use Illuminate\Auth\Access\Response;
 
 class CustomerPolicy
 {
+    public function before(User $user, $ability)
+    {
+        // Allow all actions if not using user-based authorization
+        return true;
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +26,7 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +34,7 @@ class CustomerPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,15 +42,14 @@ class CustomerPolicy
      */
     public function update(User $user, Customer $customer): bool
     {
-        //
+        return true;
     }
-
     /**
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Customer $customer): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +57,7 @@ class CustomerPolicy
      */
     public function restore(User $user, Customer $customer): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +65,6 @@ class CustomerPolicy
      */
     public function forceDelete(User $user, Customer $customer): bool
     {
-        //
+        return true;
     }
 }

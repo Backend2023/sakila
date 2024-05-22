@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AddressController;
-
+use App\Http\Controllers\CustomerController;
 
 require __DIR__ . '/auth.php';
 
+
+
+Route::resource('customers', CustomerController::class);
 Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test');
 Route::resource('address', AddressController::class);
 Route::resource('cities', CityController::class);

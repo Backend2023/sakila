@@ -34,6 +34,7 @@ php artisan make:model Customer --all
 
 # tinker
  php artisan tinker
+ Customer::factory()->count(50)->create();
 
 # testing
 - php artisan test
