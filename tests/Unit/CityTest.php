@@ -16,33 +16,33 @@ class CityTest extends TestCase
 
     public function test_city_model()
     {
-        // Create a Country and City using factories
+        // kreiramo Country i City koristeći factory
         $country = Country::factory()->create();
         $city = City::factory()->create(['country_id' => $country->country_id]);
         $address = Address::factory()->create(['city_id' => $city->city_id]);
 
-        // Basic assertions
+        // osnovne provjere modela City
         $this->assertDatabaseHas('cities', ['city_id' => $city->city_id]);
         $this->assertNotNull($city->city);
         $this->assertNotNull($city->country_id);
         $this->assertEquals($city->country_id, $country->country_id);
 
-        // Relationship assertions
+        // provjera relacije
         $this->assertInstanceOf(Country::class, $city->country);
         $this->assertEquals($city->country->country_id, $country->country_id);
 
-        // Verify city belongs to a country
+        // provjera da grad pripada drzavi
         $this->assertTrue($country->cities->contains($city));
 
-        // Verify city has many addresses
+        // provjera da grad ima više adresa
         $this->assertGreaterThanOrEqual(1, $city->addresses->count());
         $this->assertContainsOnlyInstancesOf(Address::class, $city->addresses);
 
-        // Verify address belongs to a city
+        // provjera da adresa pripada gradu
         $this->assertTrue($city->addresses->contains($address));
         $this->assertEquals($address->city->city_id, $city->city_id);
 
-        // Verify country has many cities
+        // provjera da drzava ima vise gradova
         $this->assertGreaterThanOrEqual(1, $country->cities->count());
         $this->assertContainsOnlyInstancesOf(City::class, $country->cities);
     }

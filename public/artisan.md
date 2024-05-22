@@ -30,6 +30,7 @@ php artisan route:list --except-vendor
 # models
 php artisan make:model City --all
 php artisan make:model Country -fc
+php artisan make:model Customer --all
 
 # tinker
  php artisan tinker
@@ -43,6 +44,8 @@ php artisan make:model Country -fc
 php artisan make:test AddressTest --unit
 php artisan make:test CityTest --unit
 php artisan make:test CountryTest --unit
+php artisan make:test AddressComponentTest --unit
+
 
 
 # Blade layouts & icons

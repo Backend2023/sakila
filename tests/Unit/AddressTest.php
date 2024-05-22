@@ -188,7 +188,7 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
 
     public function test_address_model()
     {
-        // Create a Country, City, and Address using factories
+        // kreiraj Country, City, i Address koristeći factory()
         $country = Country::factory()->create();
         $city = City::factory()->create(['country_id' => $country->country_id]);
         $address = Address::factory()->create(['city_id' => $city->city_id]);
@@ -204,6 +204,8 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
         $this->assertEquals($address->city->country->country_id, $country->country_id);
         $this->assertInstanceOf(City::class, $address->city);
         $this->assertInstanceOf(Country::class, $address->city->country);
+
+        //Obrisi testne podatke
     }
 
 }

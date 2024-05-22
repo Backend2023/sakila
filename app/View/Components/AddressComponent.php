@@ -32,17 +32,32 @@ class AddressComponent extends Component
 
        // dd($addressId);
       //  dd($addressInfo);
-    $this->address = $addressInfo->address;
-    $this->city = $addressInfo->city;
-    $this->country = $addressInfo->country;
+      if ($addressInfo) {
+        $this->address = $addressInfo->address;
+        $this->city = $addressInfo->city;
+        $this->country = $addressInfo->country;
+    } else {
+        // Handle the case where address is not found
+        $this->address = null;
+        $this->city = null;
+        $this->country = null;
+    }
+
 
 
     $address2 = Address::with('city.country')->findOrFail($addressId);
     //dd($address2);
-    $this->address2 = $address2->address;
-    $this->city2 = $address2->city->city;
-    $this->country2 = $address2->city->country->country;
 
+    if ($address2) {
+        $this->address2 = $address2->address;
+        $this->city2 = $address2->city->city;
+        $this->country2 = $address2->city->country->country;
+    } else {
+        // Ukoliko adresa nije nadjena postavi na null
+        $this->address2 = null;
+        $this->city2 = null;
+        $this->country2 = null;
+    }
     }
 
     /**
