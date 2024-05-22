@@ -12,7 +12,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $adrese = Address::all()->take(4);
+        $adrese = Address::all()->take(4);  //ima ih 600!
         return view('address.index', compact('adrese'));
     }
 
@@ -21,7 +21,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('address.create');
     }
 
     /**
@@ -29,7 +29,21 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+         $validated = $request->validate([
+            'address' => 'required|string|max:45',
+            'address2' => 'required|string|max:45',
+            'district' => 'required|string|max:45',
+            'city_id' => 'required|integer',
+            'postal_code' => 'required|string|max:45',           
+            'phone' => 'required|string|max:45',
+        ]);
+
+dd($validated);
+        //TODO provjeri sa tinkerom 
+        Address::create($validated);
+ 
+        return redirect()->route('addresses.index')->with('success', 'Address created successfully.'); 
     }
 
     /**

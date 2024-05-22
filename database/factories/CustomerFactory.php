@@ -16,6 +16,7 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
+        //  Customer::factory()->count(50)->create();
         return [
             //'store_id' => $this->faker->numberBetween(1, 5),  //izbacio zboj jednostavnosti
             'first_name' => $this->faker->firstName,

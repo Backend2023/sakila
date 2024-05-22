@@ -13,9 +13,11 @@ class adresa extends Component
      * Create a new component instance.
      */
     public $address;
+    public $address_id;
     public function __construct(Address $address)
     {
         $this->address=$address;
+        $this->address_id=$address->address_id;
     }
 
     /**

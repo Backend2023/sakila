@@ -5,7 +5,7 @@
   border: 2px solid #73AD21;
   padding: 20px;
   width: 200px;
-  height: 150px;
+  height: 200px;
   margin: 5px;">
         <p style="font-weight: bold;"><x-icon name="envelope" solid mini />{{ $address->address }} </p>
         <p>Regija: {{ $address->district }}</p> 

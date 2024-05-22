@@ -14,5 +14,10 @@
     <p>Created At: {{ $customer->create_date }}</p>
     <p>Last Updated: {{ $customer->last_update }}</p>
     <a href="{{ route('customers.index') }}">Back to list</a>
+<hr>
+<h3>Komponenta adresa</h3>
+    <x-address-component :addressId="$customer->address_id"/>
+ 
+    <x-adresa :address="App\Models\Address::find($customer->address_id)"/>
 </x-tailwind-blue-layout>
 <!--    -->

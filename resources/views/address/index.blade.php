@@ -1,5 +1,7 @@
 <x-tailwind-blue-layout>
 
+<a href="{{ route('address.create') }}">Dodaj novu adresu</a>
+
 <h3>Komponenta address-component</h3>
 @foreach ($adrese as $a)
 <x-address-component :addressId="$a->address_id"/>
