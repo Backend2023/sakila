@@ -13,6 +13,7 @@ class Customer extends Model
         'first_name',
         'last_name',
         'email',
-        'address_id'
+        'address_id',
+        'active'
         ];
 }

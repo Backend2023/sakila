@@ -37,11 +37,11 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request, Customer $customer)
     {
-        $this->authorize('create-customer');
-        
-        if (Gate::any(['create-customer',], $customer)) {
+       // $this->authorize('create-customer');
+
+ /*        if (Gate::any(['create-customer',], $customer)) {
             // The user can update or delete the post...
-        }
+        } */
         return "hello";
 /*         $validated = $request->validate([
           //  'store_id' => 'required|integer',  // izbacio zbog jednostavnosti
