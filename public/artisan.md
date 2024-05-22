@@ -40,6 +40,10 @@ php artisan make:model Country -fc
 - php artisan make:test UserTest    
 <!-- kreira unit test -->
 - php artisan make:test UserTest --unit
+php artisan make:test AddressTest --unit
+php artisan make:test CityTest --unit
+php artisan make:test CountryTest --unit
+
 
 # Blade layouts & icons
 https://tailwindflex.com/@nejaa-badr/tailwind-sidebar-layout-2

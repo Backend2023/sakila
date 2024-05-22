@@ -37,4 +37,11 @@ class City extends Model
         // City::find(300)->adrese()->get();
         return $this->hasMany(Address::class, 'city_id');
     }
-}
+    
+    public function addresses(): HasMany
+    {
+        // City::find(300)->adrese()->get();
+        return $this->hasMany(Address::class, 'city_id');
+    }
+
+    }
