@@ -12,10 +12,10 @@
 </div>
 <div>
     <label>postal_code</label>
-    <input type="text" name="postal_code" value="{{ old('postal_code', $customer->postal_code ?? '') }}">
+    <input type="text" name="postal_code" value="{{ old('postal_code', $address->postal_code ?? '') }}">
 </div>
 <div>
     <label>phone</label>
-    <input type="text" name="phone" value="{{ old('phone', $customer->phone ?? '') }}">
+    <input type="text" name="phone" value="{{ old('phone', $address->phone ?? '') }}">
 </div>
 

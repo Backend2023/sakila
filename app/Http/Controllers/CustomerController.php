@@ -42,8 +42,8 @@ class CustomerController extends Controller
  /*        if (Gate::any(['create-customer',], $customer)) {
             // The user can update or delete the post...
         } */
-        return "hello";
-/*         $validated = $request->validate([
+  
+         $validated = $request->validate([
           //  'store_id' => 'required|integer',  // izbacio zbog jednostavnosti
             'address_id' => 'required|integer',
             'first_name' => 'required|string|max:45',
@@ -55,7 +55,7 @@ class CustomerController extends Controller
         Customer::create($validated);
 
 //TODO fix the "This action is unauthorized" 
-        return redirect()->route('customers.index')->with('success', 'Customer created successfully.'); */
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully.'); 
     }
 
 

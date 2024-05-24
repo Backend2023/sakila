@@ -56,6 +56,9 @@ class AddressTest extends TestCase
         $this->assertTrue($u1[0]->country_id == 87);
 
     }
+    /**
+     * Ovaj test koristi troughtout ? da bi preko modela posrednika došao do krajnjeg modela
+     */
         public function test_single_country_eloquent(): void
     {
         $address2 = Address::with('city.country')->findOrFail(7);
@@ -71,6 +74,9 @@ class AddressTest extends TestCase
         $this->assertEquals("Argentina",$drzava->country,"Drzava pod ID 6 je Argentina");
         $this->assertNotEquals("Brazil",$drzava->country,"Drzava pod ID 6 ne smije biti Brazil");
     }
+    /**
+     * One to many test country -> cities
+     */
             public function test_all_cities_from_country_6_eloquent(): void
     {
         // dohvati mi sve gradove koji se nalaze u Country pod ID=6
@@ -186,6 +192,9 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
 
     //use RefreshDatabase;
 
+    /**
+     * Test relacija
+     */
     public function test_address_model()
     {
         // kreiraj Country, City, i Address koristeći factory()
@@ -202,9 +211,10 @@ $this->assertEquals("Greece"        ,$address2->city->country->country,"zemlja j
         $this->assertNotNull($address->phone);
         $this->assertEquals($address->city->city_id, $city->city_id);
         $this->assertEquals($address->city->country->country_id, $country->country_id);
+        $this->assertEquals($address->city->mojazemlja->country_id, $country->country_id);   
         $this->assertInstanceOf(City::class, $address->city);
         $this->assertInstanceOf(Country::class, $address->city->country);
-
+        $this->assertInstanceOf(Address::class, $address);
         //Obrisi testne podatke
     }
 

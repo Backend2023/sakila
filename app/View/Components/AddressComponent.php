@@ -74,6 +74,6 @@ class AddressComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.address-component');
+        return view('components.address-component')->with('boja','plava');
     }
 }

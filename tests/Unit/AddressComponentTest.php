@@ -35,7 +35,7 @@ class AddressComponentTest extends TestCase
         $invalidAddressId = 999;
 
         // ukoliko smo sigurni da će exceprtion sprijeciti daljnje asserte
-        //$this->expectNotToPerformAssertions();
+     //   $this->expectNotToPerformAssertions();
         
         /**
          * Ne postoji model s ID=999 pa nam DB raw query baca exception
@@ -57,6 +57,21 @@ class AddressComponentTest extends TestCase
 
     } 
 
+    public function test_component_handles_invalid_addres_string()
+    {
+        // Napravimo komponentu sa invalid address ID sa string
+        $invalidAddressId = 'abc';
+
+        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+       
+        $component = new AddressComponent($invalidAddressId);
+           
+            // Ovo dolje se nikada nece izvrsiti zbog exceptiona
+                  $this->assertNull($component->address);
+                  $this->assertNull($component->city);
+                  $this->assertNull($component->country);
+    } 
+
     public function test_component_view_is_rendered()
     {
         // Create Country, City, and Address using factories
@@ -69,6 +84,15 @@ class AddressComponentTest extends TestCase
 
         // Assert the view is returned correctly
         $this->assertEquals('components.address-component', $view->name());
+        
+        // pri pogledamo kako izgleda
+        //var_dump($view->getData());
+
+  // Pogledaj posdatke koje smo poslali na view (prazan array)
+        $this->assertEquals(['boja' => 'plava'], $view->getData());
+        $this->assertArrayHasKey('boja', $view->getData());
+        $this->assertIsArray($view->getData());
+
     }
 
     // Additional tests for edge cases and performance can be added here

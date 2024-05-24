@@ -66,7 +66,8 @@ dd($validated);
         //     updated_at: null,
         //   }
 
-        return view('address.show', ['addressId' => $address->address_id]);
+       // return view('address.show', ['addressId' => $address->address_id]);
+       return view('address.show', ['address' => $address]);
     }
 
     /**
@@ -74,7 +75,7 @@ dd($validated);
      */
     public function edit(Address $address)
     {
-        //
+        return view('address.edit', compact('address'));
     }
 
     /**
@@ -90,6 +91,8 @@ dd($validated);
      */
     public function destroy(Address $address)
     {
-        //
+        $address->delete();
+
+        return redirect()->route('address.index')->with('success', 'Address with id '.$address->address_id.' deleted successfully.');
     }
 }
