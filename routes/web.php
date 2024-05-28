@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 
 require __DIR__ . '/auth.php';
 
-
+Route::view('/component', 'test-component')->name('test-component');;
 
 Route::resource('customers', CustomerController::class);
 Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use Illuminate\Http\Request;
+use App\Http\Requests\updateAddressRequest;
 
 class AddressController extends Controller
 {
@@ -81,9 +82,17 @@ dd($validated);
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Address $address)
+    public function update(updateAddressRequest $request, Address $address)
     {
-        //
+       // dd($request);
+   
+try {
+    $address->update($request->validated());
+
+    return redirect()->route('address.index')->with('success', 'Adresa je uspješno izmjenjena.');
+} catch (\Exception $e) {
+    return redirect()->back()->with('error', 'An error occurred while updating the address.');
+}
     }
 
     /**

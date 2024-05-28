@@ -92,6 +92,17 @@ class CustomerController extends Controller
         $customer->update($validated);
 
         return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
+
+
+//Treba ovako:
+// try {
+//     $customer->update($request->validated());
+
+//     return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
+// } catch (\Exception $e) {
+//     return redirect()->back()->with('error', 'An error occurred while updating the customer.');
+// }
+
     }
 
     /**

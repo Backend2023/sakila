@@ -79,11 +79,11 @@
 
                             Users
                         </a>
-                        <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
+                        <a href="/component" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="margin-right: 8px">
                                 <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a9.89 9.89 0 0 0 2.26 6.33l-2 2a1 1 0 0 0-.21 1.09A1 1 0 0 0 3 22h9a10 10 0 0 0 0-20m0 18H5.41l.93-.93a1 1 0 0 0 0-1.41A8 8 0 1 1 12 20m5-9H7a1 1 0 0 0 0 2h10a1 1 0 0 0 0-2m-2 4H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2M9 9h6a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2" />
                             </svg>
-                            comments
+                            Laravel komponente
                         </a>
                     </div>
                 </nav>
@@ -139,31 +139,64 @@
                 $nekavarijabla ne postoji pa se neće ovaj redak ispisati
                 @endisset
 
-                <?php 
-                $records=123; 
+                <?php
+                $records = 123;
                 ?>
                 @empty($records)
-                 $records is "empty"...
+                $records is "empty"...
                 @endempty
                 @isset($records)
-   <!-- $records ima vrijednost jen-dva-tri  -->
-@endisset
+                <!-- $records ima vrijednost jen-dva-tri  -->
+                @endisset
 
-@if (session('success'))
-<br/>
-    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-  <div class="flex">
-    <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-    <div>
-      <p class="font-bold"> {{ session('success') }}</p>
-      <p class="text-sm">Bez obzira na uspješnu akciju pozeljno je provjeriti podatke u bazi</p>
-    </div>
-  </div>
-</div>
-<br/>
-@endif
+                @if (session('success'))
+                <br />
+                <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                    <div class="flex">
+                        <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                            </svg></div>
+                        <div>
+                            <p class="font-bold"> {{ session('success') }}</p>
+                            <p class="text-sm">Bez obzira na uspješnu akciju pozeljno je provjeriti podatke u bazi</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                @endif
+                @if(session('error'))
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Holy smokes!</strong>
+                    <span class="block sm:inline"> {{ session('error') }}</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                        </svg>
+                    </span>
+                </div>
+                @endif
+
+
+
+                @if($errors->any())
+                <div role="alert">
+                    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                        Danger
+                    </div>
+                    @foreach($errors->all() as $error)
+                    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                        <p>{{ $error }}</p>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+<!--  CONTENT    CONTENT   CONTENT   CONTENT   CONTENT   CONTENT   CONTENT  -->
 
                 {{$slot}}
+
+<!--  END CONTENT    END CONTENT     END CONTENT     END CONTENT    END CONTENT  -->
+
                 <div>
                     <br>
                 </div>
