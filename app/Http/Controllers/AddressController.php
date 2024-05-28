@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use Illuminate\Http\Request;
-use App\Http\Requests\updateAddressRequest;
+use App\Http\Requests\UpdateAddressRequest;
+use App\Http\Requests\StoreAddressRequest;
 
 class AddressController extends Controller
 {
@@ -28,23 +29,16 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(StoreAddressRequest $request)
     {
+        try {
+            Address::create($request->validated());
 
-         $validated = $request->validate([
-            'address' => 'required|string|max:45',
-            'address2' => 'required|string|max:45',
-            'district' => 'required|string|max:45',
-            'city_id' => 'required|integer',
-            'postal_code' => 'required|string|max:45',           
-            'phone' => 'required|string|max:45',
-        ]);
-
-dd($validated);
-        //TODO provjeri sa tinkerom 
-        Address::create($validated);
- 
-        return redirect()->route('addresses.index')->with('success', 'Address created successfully.'); 
+            return redirect()->route('address.index')->with('success', 'Nova adresa je uspješno dodana.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while adding the address.'.$e->getMessage());
+        }
     }
 
     /**
@@ -67,8 +61,8 @@ dd($validated);
         //     updated_at: null,
         //   }
 
-       // return view('address.show', ['addressId' => $address->address_id]);
-       return view('address.show', ['address' => $address]);
+        // return view('address.show', ['addressId' => $address->address_id]);
+        return view('address.show', ['address' => $address]);
     }
 
     /**
@@ -82,17 +76,17 @@ dd($validated);
     /**
      * Update the specified resource in storage.
      */
-    public function update(updateAddressRequest $request, Address $address)
+    public function update(UpdateAddressRequest $request, Address $address)
     {
-       // dd($request);
-   
-try {
-    $address->update($request->validated());
+        // dd($request);
 
-    return redirect()->route('address.index')->with('success', 'Adresa je uspješno izmjenjena.');
-} catch (\Exception $e) {
-    return redirect()->back()->with('error', 'An error occurred while updating the address.');
-}
+        try {
+            $address->update($request->validated());
+
+            return redirect()->route('address.index')->with('success', 'Adresa je uspješno izmjenjena.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while updating the address.');
+        }
     }
 
     /**
@@ -102,6 +96,6 @@ try {
     {
         $address->delete();
 
-        return redirect()->route('address.index')->with('success', 'Address with id '.$address->address_id.' deleted successfully.');
+        return redirect()->route('address.index')->with('success', 'Address with id ' . $address->address_id . ' deleted successfully.');
     }
 }

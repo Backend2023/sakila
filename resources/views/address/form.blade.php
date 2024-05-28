@@ -7,6 +7,10 @@
     <input type="text" name="address2" value="{{ old('address2', $address->address2 ?? '') }}">
 </div>
 <div>
+    <label>District</label>
+    <input type="text" name="district" value="{{ old('district', $address->district ?? '') }}">
+</div>
+<div>
     <label>city_id</label>
     <input type="number" name="city_id" value="{{ old('city_id', $address->city_id ?? '') }}">
 </div>
