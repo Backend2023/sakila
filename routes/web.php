@@ -11,7 +11,7 @@ require __DIR__ . '/auth.php';
 Route::view('/component', 'test-component')->name('test-component');;
 
 Route::resource('customers', CustomerController::class);
-Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test');
+Route::view('/addresstest', 'address.test', ['addressId' => '177'])->name('address.test');
 Route::resource('address', AddressController::class);
 Route::resource('cities', CityController::class);
 

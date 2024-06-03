@@ -24,6 +24,7 @@ class StoreAddressRequest extends FormRequest
         return [
             'address' => 'required|string|max:50',
             'address2' => 'string|max:50',
+            'district' => 'required|string|max:20', // ovo nam je nedostajalo
             'city_id' => 'required|integer|max_digits:5',
             'postal_code' => 'string|max:10',            
             'phone' => 'required|string|max:20',

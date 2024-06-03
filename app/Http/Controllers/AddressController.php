@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\App;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateAddressRequest;
@@ -32,12 +32,19 @@ class AddressController extends Controller
     // public function store(Request $request)
     public function store(StoreAddressRequest $request)
     {
+        //dd($request);
         try {
             Address::create($request->validated());
 
             return redirect()->route('address.index')->with('success', 'Nova adresa je uspješno dodana.');
         } catch (\Exception $e) {
+            // za debugging ispisi exception
+         //   return redirect()->back()->with('error', 'An error occurred while adding the address.'.$e->getMessage());
+         //@if env== production then ispisi error.
+         if(App::environment()=='local'){
             return redirect()->back()->with('error', 'An error occurred while adding the address.'.$e->getMessage());
+         }
+         return redirect()->back()->with('error', 'An error occurred while adding the address.');
         }
     }
 

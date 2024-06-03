@@ -1,6 +1,8 @@
 <!-- resources/views/address/test.blade.php -->
 <!-- http://127.0.0.1:8000/addresstest  -->
-
+<?php
+//dd($addressId);
+?>
 @extends('layouts.bootstrap')
 
 @section('title', 'Address komponenta grad i drzava')
@@ -19,8 +21,12 @@
 <x-icon name="building-office-2" solid />
 <x-icon name="building-office-2" solid mini />
 
+
 <!-- routes/web.php : -->
 <!-- Route::view('/addresstest', 'address.test', ['addressId' => '7'])->name('address.test'); -->
+<p style="color: crimson;">Postoji li adresa sa id=177?
+<br> u web.php šalje "177" http://127.0.0.1:8000/addresstest
+</p>
 <x-address-component :addressId="$addressId" />
 
 <hr>

@@ -42,4 +42,14 @@ class UpdateAddressRequest extends FormRequest
     ]
         */
     }
+    public function messages()
+    {
+        return [
+            'address.required' => 'Adresa je obavezna.',
+            'address.string' => 'Adresa mora biti riječ (string)',
+            'address.max' => 'maksimalni broj znakova adrese moze biti 50',
+            'city_id.required' => 'city id je obavezan',
+            // Add custom messages for other validation rules
+        ];
+    }
 }
