@@ -14,8 +14,9 @@ class AddressMatchTest extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('/testmatch') //http://localhost:8000/testmatch
+                    ->assertSee('Hello World iz match rute')
+                    ->screenshot('testmatch');
         });
     }
 }
