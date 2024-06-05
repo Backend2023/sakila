@@ -20,7 +20,9 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+      //  $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+    
+      $this->redirectIntended(default: route('test-component', absolute: false), navigate: true);
     }
 }; ?>
 
@@ -64,7 +66,7 @@ new #[Layout('layouts.guest')] class extends Component
             @endif
 
             <x-primary-button name="logirajme" id="logirajme" class="ms-3">
-                {{ __('Log in') }}
+                {{__('Log in')}}
             </x-primary-button>
         </div>
     </form>

@@ -10,8 +10,10 @@ class AddressMatchTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
+     *    PASS  Tests\Browser\AddressMatchTest
+     *   ✓ match rute     
      */
-    public function testExample(): void
+    public function testMatchRute(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/testmatch') //http://localhost:8000/testmatch
