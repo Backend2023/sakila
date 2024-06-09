@@ -18,7 +18,7 @@ class CustomerFactory extends Factory
     {
         //  Customer::factory()->count(50)->create();
         return [
-            //'store_id' => $this->faker->numberBetween(1, 5),  //izbacio zboj jednostavnosti
+            'store_id' => $this->faker->numberBetween(1, 5),  //izbacio zboj jednostavnosti
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
