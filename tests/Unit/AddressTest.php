@@ -128,6 +128,9 @@ class AddressTest extends TestCase
     }
     public function test_address_city_county_DB(): void
     {
+        $this->markTestSkipped(
+            'podaci se u bazi generiraju fakerom pa nije moguće usporediti vrijednosti '
+          );
         // > $addressId=7
         // = 7
         
@@ -148,6 +151,7 @@ class AddressTest extends TestCase
     ->first();
    
 
+
         $this->assertEquals("692 Joliet Street",$addressInfo->address,"Adresa s ID =7 je '692 Joliet Street'");
         $this->assertEquals("Athenai",$addressInfo->city,"Grad je Atena");
         $this->assertEquals("Greece",$addressInfo->country,"zemlja je Greece");
@@ -155,6 +159,9 @@ class AddressTest extends TestCase
     } 
     public function test_address_city_county_eloquent(): void
     {
+        $this->markTestSkipped(
+            'podaci se u bazi generiraju fakerom pa nije moguće usporediti vrijednosti '
+          );
 //         > $address2 = Address::with('city.country')->findOrFail($addressId);
 // [!] Aliasing 'Address' to 'App\Models\Address' for this Tinker session.
 // = App\Models\Address {#6615
