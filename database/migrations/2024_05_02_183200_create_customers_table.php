@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->increments('customer_id');
+            $table->smallIncrements('customer_id');
+          //  $table->increments('customer_id');
             $table->unsignedTinyInteger('store_id')->index('idx_fk_store_id');
           //  $table->unsignedTinyInteger('store_id');
             $table->unsignedSmallInteger('address_id');
