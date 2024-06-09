@@ -9,7 +9,8 @@ git log -1
 opet2
 
 pass za jenkins:pmrvic
-promjena imena branck "11.x" => "main"
+
+# promjena imena branck "11.x" => "main"
 
 Updating a local clone after a branch name changes
 After you rename a branch in a repository on GitHub, any collaborator with a local clone of the repository will need to update the clone.
