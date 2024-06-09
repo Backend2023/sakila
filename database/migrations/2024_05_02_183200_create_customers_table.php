@@ -12,15 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->smallIncrements('customer_id');
-            $table->unsignedTinyInteger('store_id')->index('idx_fk_store_id');
+            $table->increments('customer_id');
+          //  $table->unsignedTinyInteger('store_id');
+            $table->unsignedSmallInteger('address_id');
             $table->string('first_name', 45);
-            $table->string('last_name', 45)->index('idx_last_name');
+            $table->string('last_name', 45);
             $table->string('email', 50)->nullable();
-            $table->unsignedSmallInteger('address_id')->index('idx_fk_address_id');
-            $table->boolean('active')->default(true);
-           // $table->dateTime('create_date');  // ovo je višak
-          //  $table->timestamp('last_update')->useCurrentOnUpdate()->useCurrent();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
