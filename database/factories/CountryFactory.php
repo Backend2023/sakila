@@ -18,7 +18,8 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            'country' => $this->faker->country,
+            //'country' => $this->faker->country,  // ovo generira predugačko ime
+            'country' => substr($this->faker->country, 0, 50),
             'created_at' => now(),
             'updated_at' => now(),
         ];
