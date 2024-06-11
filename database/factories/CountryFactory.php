@@ -19,7 +19,7 @@ class CountryFactory extends Factory
     {
         return [
             //'country' => $this->faker->country,  // ovo generira predugačko ime
-            'country' => substr($this->faker->country, 0, 50),
+            'country' => substr($this->faker->country, 0, 50), //skratimo na 50 znakova
             'created_at' => now(),
             'updated_at' => now(),
         ];
